@@ -22,7 +22,24 @@ int stringAddiction(char* s)
 	return sum;
 }
 
+void test(int sum,int prov)
+{
+	if (sum == prov)
+		cout << "ok" << endl;
+	else
+		cout << "Fail" << endl;
+}
+
+
 int main()
 {
+	test(stringAddiction("123+2"), 125);
+	test(stringAddiction("1+999"), 1000);
+	test(stringAddiction("1000-800"), 200);
+	test(stringAddiction("500+15000"), 15500);
+	test(stringAddiction("1234444+4"), 1234448);
+	test(stringAddiction("1233333-3"), 1233330);
+	test(stringAddiction("89999+1"), 90000);
+	test(stringAddiction("15000-10000"), 5000);
 	return 0;
 }
