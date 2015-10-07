@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void prog(char s[])
+char* prog(char* s)
 {
 	int j = 0, z = 0, o = 0;
 	int j1 = 0, num = 0, l = 0;
@@ -89,12 +89,37 @@ void prog(char s[])
 
 		for (int y = 0; y <= j; y++)
 		s[y] = stroka[y];
+		return s;
 		
 }
 
-void main()
+void assert(char* s, char* res)
 {
-	char s[100] = "ADSas46877ADS46877ds";
-	prog(s);
-	cout << s << endl;
+	bool check = true;
+	char* ans = prog(s);
+	if (strlen(ans) == strlen(res))
+	{
+		for (int i = 0; i < strlen(ans); i++)
+			if (ans[i] != s[i]) check = false;
+		if (check == true) cout << "OK" << endl;
+		else cout << "FAIL" << endl;
+	}
+	else cout << "FAIL" << endl;
+}
+
+int main()
+{
+	char* s1 = "16";
+	char* res1 = "0x10";
+	assert(s1, res1);
+	char* s2 = "asdfgh99jkl";
+	char* res2 = "asdfgh0x63jkl";
+	assert(s2, res2);
+	char* s3 = "123456789";
+	char* res3 = "0x75BCD15";
+	assert(s3, res3);
+	char* s4 = "22.qwr34[41";
+	char* res4 = "16.qwr0x22[0x29";
+	assert(s4, res4);
+	return 0;
 }
